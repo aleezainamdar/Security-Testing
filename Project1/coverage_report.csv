@@ -1,0 +1,3 @@
+filename,line_total,line_covered,line_percent,branch_total,branch_covered,branch_percent,function_total,function_covered,function_percent
+shell.c,8743,754,0.086,6456,390,0.06,391,60,0.153
+sqlite3.c,46328,20460,0.442,30925,10227,0.331,2476,1418,0.573
