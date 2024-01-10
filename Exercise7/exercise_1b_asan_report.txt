@@ -1,0 +1,61 @@
+noname.xml:1: namespace error : Failed to parse QName 'fkzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzZzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzdzzzzzIDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz:schemazzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz:'
+zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+                                                                               ^
+noname.xml:1: namespace error : Namespace prefix fkzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzZzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzdzzzzzIDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz on schemazzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz:includezzzzzzzzzzzzzzzzzrzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz..................................................................... is not defined
+zzzzzzzzzzz.....................................................................
+                                                                               ^
+=================================================================
+==87969==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x621000001453 at pc 0x0000007b273b bp 0x7ffd33c47f20 sp 0x7ffd33c47f18
+READ of size 1 at 0x621000001453 thread T0
+    #0 0x7b273a in xmlDictComputeFastQKey /libxml2/dict.c:459:18
+    #1 0x7b0708 in xmlDictQLookup /libxml2/dict.c:1049:12
+    #2 0x7c0bee in xmlSAX2StartElementNs /libxml2/SAX2.c:2191:17
+    #3 0x5223ca in xmlParseStartTag2 /libxml2/parser.c:9252:6
+    #4 0x51abe7 in xmlParseElement /libxml2/parser.c:9599:16
+    #5 0x52a623 in xmlParseDocument /libxml2/parser.c:10354:2
+    #6 0x547b91 in xmlDoRead /libxml2/parser.c:14657:5
+    #7 0x547f22 in xmlReadMemory /libxml2/parser.c:14740:13
+    #8 0x4c47a3 in harness /libxml2/./harness.c:11:18
+    #9 0x4c47a3 in main /libxml2/./harness.c:21:3
+    #10 0x7fba1b3a8082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    #11 0x41c5dd in _start (/libxml2/fuzzer+0x41c5dd)
+
+0x621000001453 is located 173 bytes to the left of 4040-byte region [0x621000001500,0x6210000024c8)
+allocated by thread T0 here:
+    #0 0x494d1d in malloc (/libxml2/fuzzer+0x494d1d)
+    #1 0x7ae286 in xmlDictAddString /libxml2/dict.c:246:29
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /libxml2/dict.c:459:18 in xmlDictComputeFastQKey
+Shadow bytes around the buggy address:
+  0x0c427fff8230: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8240: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8250: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8260: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8270: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c427fff8280: fa fa fa fa fa fa fa fa fa fa[fa]fa fa fa fa fa
+  0x0c427fff8290: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff82a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff82b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff82c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff82d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==87969==ABORTING

@@ -1,0 +1,2 @@
+id:000002,sig:06,src:000194,op:havoc,rep:8
+k-uu[@-u

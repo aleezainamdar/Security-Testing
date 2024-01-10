@@ -1,0 +1,25 @@
+0000000000a62020 B _ZN6__asan11asan_initedE
+0000000000a62024 B _ZN6__asan20asan_init_is_runningE
+00000000012f6f50 B __afl_area_initial
+0000000000a4dcc0 D __afl_area_ptr
+0000000000938280 T __afl_auto_init
+00000000009380d0 T __afl_manual_init
+00000000012f6ee9 b __afl_manual_init.init_done
+0000000000938000 T __afl_persistent_loop
+00000000012f6ee4 b __afl_persistent_loop.cycle_cnt
+00000000012f6ee0 b __afl_persistent_loop.first_pass
+000000000000007c B __afl_prev_loc
+00000000012f6eea b __afl_start_forkserver.tmp
+000000000049cd90 T __asan_init
+000000000094bc60 r __const.harness.dummy_xml_name
+00000000004c4410 T harness
+        linux-vdso.so.1 (0x00007ffceb5ac000)
+        libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f09ef8ec000)
+        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f09ef79d000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f09ef77a000)
+        librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f09ef770000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f09ef76a000)
+        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f09ef74f000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f09ef55b000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f09ef90f000)
+/libxml2/fuzzer: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=d8dc1c458fcec7b484021f6b7267736a14ee8191, for GNU/Linux 3.2.0, with debug_info, not stripped
